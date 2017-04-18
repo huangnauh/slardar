@@ -2,7 +2,7 @@
 
 local cjson     = require "cjson.safe"
 local checkups  = require "resty.checkups.api"
-local mload     = require "modules.load"
+local mload     = require "resty.load"
 
 local get_method    = ngx.req.get_method
 local read_body     = ngx.req.read_body
