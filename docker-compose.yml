@@ -1,0 +1,26 @@
+version: '3.2'
+
+services:
+    consul:
+        image: consul:1.0.1
+        command: agent -dev -data-dir=/tmp -advertise=127.0.0.1 -bind=0.0.0.0 -client=0.0.0.0
+        ports:
+            - "8500:8500"
+
+    slardar:
+        links:
+            - consul
+        image: huangnauh/slardar:latest
+        volumes:
+            - type: bind
+              source: ./nginx/conf
+              target: /usr/local/slardar/nginx/conf
+            - type: bind
+              source: ./nginx/app/etc
+              target: /usr/local/slardar/app/etc
+        ports:
+            - "1895:1895"
+            - "1995:1995"
+            - "3141:3141"
+            - "3131:3131"
+            - "8080:8080"
