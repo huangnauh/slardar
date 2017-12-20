@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+    consul:
+        image: progrium/consul
+        command: -server -bootstrap-expect 1
+        ports:
+            - "8500:8500"
+
+    mysql3306:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: upyun
+            MYSQL_USER: runner
+            MYSQL_PASSWORD: runner123456
+        ports:
+            - "3306:3306"
+
+    mysql3307:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: upyun
+            MYSQL_USER: runner
+            MYSQL_PASSWORD: runner123456
+        ports:
+            - "3307:3306"
+
+    slardar:
+        depends_on:
+            - consul
+            - mysql3307
+            - mysql3306
+        image: huangnauh/slardar:test
+        ports: 
+            - "1895:1895"
+            - "1995:1995"
+            - "3151:3151"
+            - "3251:3251"
+            - "3141:3141"
+            - "3131:3131"
+            - "8080:8080"
+
+

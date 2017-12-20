@@ -31,7 +31,7 @@ _M.global = {
 
 _M.store = {
     -- key-value store type
-    type = "etcd",
+    type = "consul",
 
     -- connect to key-value store will timeout in 5s.
     timeout = 5,
@@ -56,7 +56,7 @@ _M.store = {
         {
             servers = {
                 -- change these to your own key-value store http addresses
-                { host = "127.0.0.1", port = 2379 },
+                { host = "127.0.0.1", port = 8500 },
             },
         },
     },
@@ -73,7 +73,7 @@ _M.logger = {
     timeout = 2,
 
     -- enable logger.
-    enable = true,
+    enable = false,
 
     -- node info in the log message
     node_type = "slardar_access",

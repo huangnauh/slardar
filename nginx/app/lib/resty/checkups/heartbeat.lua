@@ -232,7 +232,7 @@ local heartbeat = {
 
         if not resty_mysql then
             local ok
-            ok, resty_mysql = pcall(require, "resty.mysql")
+            ok, resty_mysql = pcall(require, "resty.mysql.packet")
             if not ok then
                 log(ERR, "failed to require resty.mysql")
                 return _M.STATUS_ERR, "failed to require resty.mysql"
