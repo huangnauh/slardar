@@ -1,9 +1,9 @@
-version: '3'
+version: '3.2'
 
 services:
     consul:
         image: consul:1.0.1
-        command: agent -dev -advertise=127.0.0.1 -bind=0.0.0.0 -client=0.0.0.0
+        command: agent -dev -data-dir=/tmp -advertise=127.0.0.1 -bind=0.0.0.0 -client=0.0.0.0
         ports:
             - "8500:8500"
 
@@ -32,12 +32,17 @@ services:
             - consul
             - mysql3307
             - mysql3306
-        image: slardar:latest
+        image: huangnauh/slardar:test
+        volumes:
+            - type: bind
+              source: ./nginx/conf
+              target: /usr/local/slardar/nginx/conf
         ports: 
             - "1895:1895"
             - "1995:1995"
             - "3151:3151"
             - "3251:3251"
+            - "3351:3351"
             - "3141:3141"
             - "3131:3131"
             - "8080:8080"
