@@ -74,6 +74,8 @@ INSTALL_DIRS=$(INSTALL_SRCDIR)/modules \
 			 $(INSTALL_LIBDIR)/resty/core \
 			 $(INSTALL_LIBDIR)/resty/checkups \
 			 $(INSTALL_LIBDIR)/resty/store \
+			 $(INSTALL_LIBDIR)/resty/limit \
+			 $(INSTALL_LIBDIR)/resty/mysql \
 			 $(INSTALL_LIBDIR)/resty/logger \
 			 $(INSTALL_ETCDIR)
 
@@ -87,6 +89,8 @@ ifndef DEV
 	$(INSTALL_F) nginx/app/lib/ngx/*.lua $(INSTALL_LIBDIR)/ngx
 	$(INSTALL_F) nginx/app/lib/resty/core/*.lua $(INSTALL_LIBDIR)/resty/core
 	$(INSTALL_F) nginx/app/lib/resty/logger/*.lua $(INSTALL_LIBDIR)/resty/logger
+	$(INSTALL_F) nginx/app/lib/resty/mysql/*.lua $(INSTALL_LIBDIR)/resty/mysql
+	$(INSTALL_F) nginx/app/lib/resty/limit/*.lua $(INSTALL_LIBDIR)/resty/limit
 	$(INSTALL_F) nginx/app/lib/resty/store/*.lua $(INSTALL_LIBDIR)/resty/store
 	$(INSTALL_F) nginx/app/lib/resty/checkups/*.lua $(INSTALL_LIBDIR)/resty/checkups
 	$(INSTALL_F) nginx/app/src/*.lua $(INSTALL_SRCDIR)

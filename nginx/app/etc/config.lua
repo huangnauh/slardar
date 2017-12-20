@@ -56,7 +56,7 @@ _M.store = {
         {
             servers = {
                 -- change these to your own key-value store http addresses
-                { host = "127.0.0.1", port = 8500 },
+                { host = "consul", port = 8500 },
             },
         },
     },
